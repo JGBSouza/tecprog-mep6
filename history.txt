@@ -1,0 +1,20 @@
+A princípio, construi o arquivo Dockerfile, usando como base a imagem do caddy e depois disso copiando os arquivos para as 
+respectivas localidades especificadas no enunciado.
+
+criei a imagem com "sudo docker build -t my-caddy-server ."
+
+e rodei com "sudo docker run -p 8080:80 my-caddy-server"
+
+Para evitar a interrupção quando modificamos as páginas podemos utilizar o docker volume
+da seguinte forma: 
+
+"sudo docker build -t my-caddy-server ."
+
+"sudo docker volume create my-server-pages"
+
+"sudo docker container run \
+    --name my-caddy-server \
+    -p 8080:80 \
+    -v caddy-pages:/usr/src/pages \
+    -d caddy:latest
+"
